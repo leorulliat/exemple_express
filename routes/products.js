@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-var base = require("../data.js")
+var products = require("../data.js").products
 
 router.get('/:id', (req, res) => {
     var id = req.params.id;
     if(id != undefined && id != ''){
-        var obj = base.products.find(item => item.id == id);
-        if(obj != undefined)
-            res.status(200).json(obj)
+        var product = products.find(item => item.id == id);
+        if(product != undefined)
+            res.status(200).json(product)
         else
             res.status(400).json({message:'produit introuvable'})
     }else{
